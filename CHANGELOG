@@ -1,0 +1,18 @@
+Version 0.3.0
+Updated MichelinNY Data.
+Changed the interface to the slider plots (mmpslider and mmpdual slider) to allow for vectors of length 2 to be passed to the bw parameter.
+
+Version 0.2.1
+mmpslider and mmpdual slider can now handle factors.
+corrected name of CHANGELOG
+
+Version 0.2.0
+Renamed package to marginalmodelplots
+Renamed mmps to mmplot
+Renamed mmp to mmplot1
+Renamed mmp.lm to mmplot1.lm
+Renamed mmp.gml to mmplot1.glm
+
+
+Version 0.1.6
+Added capabilities for handling factors better and handling binomial responses (n>1).

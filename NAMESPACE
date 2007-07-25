@@ -1,0 +1,20 @@
+#Namespace for marginalmodelplots package
+export(
+	aicc,
+	mmpdualslider,
+	mmpdualslider.glm,
+	mmpdualslider.lm,
+	mmpslider,
+	mmpslider.glm,
+	mmpslider.lm,
+	mmplot1,
+	mmplot1.glm,
+	mmplot1.lm,
+	mmplot
+)    
+S3method(mmplot1, glm)                
+S3method(mmplot1, lm)                
+S3method(mmpslider, glm)                
+S3method(mmpslider, lm)                
+S3method(mmpdualslider, glm)                
+S3method(mmpdualslider, lm)                
