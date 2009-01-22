@@ -42,7 +42,7 @@ family=NULL , link=NULL , ...){
 	bwmax<-2*bwopt
       bw<-c(bwmin,bwopt,bwmax)
     } else if((length(bw)!=3)&(length(bw)!=2))stop("if specified bw must have a length of 2 or 3 and be of either forms (min, max) or (min, starting, max)")
-    if(length(bw)==2){bw<-c(bw[1],mean(bw),bw[2])}
+    if(length(bw)==2) { bw<-c(bw[1],mean(bw),bw[2])}
     bwcur<-bw[2]
 
     # setup plotting area and grid viewports
@@ -86,7 +86,7 @@ family=NULL , link=NULL , ...){
     # loop through changing bw and curves
     xeval<-seq(min(pred),max(pred),length=200)
     res<-TRUE
-	yhat.fam<-paste(if(substr(fam,1,1)=="q"){""}else{"q"},fam,sep="")
+	yhat.fam<-paste(if(substr(fam,1,1)=="q"){""}else {"q"},fam,sep="")
     while(!is.null(res)){
         h<-unclass(bwcur)
         lp.par$h<-h

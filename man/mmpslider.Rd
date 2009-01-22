@@ -15,9 +15,6 @@ the fixed bandwidth used in generating the nonparametric smooths in the plot.
 mmpslider(m, ...)
 mmpslider.lm(m,pred=predict(m), bw=NULL , label=deparse(substitute(u)), colors=c('blue','red'),...)
 mmpslider.glm(m,pred=predict(m), bw=NULL , label=deparse(substitute(u)), colors=c('blue','red'), family=NULL , link=NULL, ...)
-mmpdualslider(m, ...)
-mmpdualslider.lm(m, pred = predict(m), bw = NULL, label = deparse(substitute(pred)), colors = c("blue", "red"),...)
-mmpdualslider.glm(m, pred = predict(m), bw = NULL, label = deparse(substitute(pred)), colors = c("blue", "red"), family = NULL, link=NULL, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -31,10 +28,9 @@ mmpdualslider.glm(m, pred = predict(m), bw = NULL, label = deparse(substitute(pr
   \item{\dots}{Passes arguments onto other functions}
 }
 \details{
-To use \code{mmpdualslider} run the function then click in the slider bar area forto adjust the bandwidth
- of that respective curve. The slider bars are color coordinated with the curve that they represent as well
- as being labeled in the slider indicator.  Clicking the stop button, or outside of the slider bars area will
- finalize the plot.\\
+To use \code{mmpslider} run the function then click in the slider bar area to adjust the bandwidth
+ of the curve. Clicking the stop button, or outside of the slider bars area will
+ finalize the plot and return control to the consol.\\
 The plot is a custom plot generated from scratch with the grid utilities.  Any further customization of the 
 plot will have to be used with in the grid framework.
 }
@@ -52,15 +48,15 @@ data(Bordeaux)
 names(Bordeaux)
 attach(Bordeaux)
 m<-lm(Price~ParkerPoints+CoatesPoints+FirstGrowth+Pomerol+VintageSuperstar+CultWine,data=Bordeaux)
-mmpdualslider(m,ParkerPoints)
+mmpslider(m,ParkerPoints)
 detach(Bordeaux)
 
 data(MichelinNY)
 attach(MichelinNY)
 m <- glm(InMichelin~Food+Decor+Service+Cost+log(Cost)+Food:Decor,family=binomial(),data=MichelinNY)
-mmpdualslider(m)
-mmpdualslider(m,Food,bw=c(1,3,10))
-mmpdualslider(m,Decor,bw=c(1,3,10))
+mmpslider(m)
+mmpslider(m,Food,bw=c(1,3,10))
+mmpslider(m,Decor,bw=c(1,3,10))
 detach(MichelinNY)
 }}
 % Add one or more standard keywords, see file 'KEYWORDS' in the

@@ -3,7 +3,7 @@
 #Lisenced under the GPL version 2 or newer
 mmpdualslider<-function(m,...)UseMethod("mmpdualslider")
 mmpdualslider.lm<-function(m,pred=predict(m),bw=NULL,label=deparse(substitute(pred)),colors=c('blue','red'),...)mmpdualslider.glm(m,pred=pred, bw=bw, label=label, colors=colors,family='qgauss',link='identity',...)
-mmpdualslider.glm<-function(m,pred=predict(m),bw=NULL,label=deparse(substitute(pred)),colors=c('blue','red'),family=NULL,link=NULL,...){
+mmpdualslider.glm<-function(m,pred=predict(m),bw=NULL,label=deparse(substitute(pred)),colors=c('blue','red'),family=NULL,link=NULL,...) {
 #lp.par should only include extra parameters such as deg
 #family is provided as a method for simplifying coding for mmpdualslider.lm
 #  but can also be used to change the type of fit performed.
@@ -15,7 +15,7 @@ mmpdualslider.glm<-function(m,pred=predict(m),bw=NULL,label=deparse(substitute(p
 	
     #extract response and predicted values
     y <- response <- m$model[,1]
-	if(is.factor(response)){
+	if(is.factor(response)) {
 		if(nlevels(response)!=2)stop("The number of levels in a factor must be 2.")
 		y<-as.numeric(response)-1
 	}
@@ -27,8 +27,8 @@ mmpdualslider.glm<-function(m,pred=predict(m),bw=NULL,label=deparse(substitute(p
 
     lp.par=list(x=pred)
     #find optimal paramteters for bw
-    if(is.null(bw)){
-      g<-function(h){
+    if(is.null(bw)) {
+      g<-function(h) {
         lp.par$h=h
         lp.u<-do.call(lp,lp.par)
 	  ll.m<-locfit(yhat~lp.u,family=fam,link=link)
@@ -41,7 +41,7 @@ mmpdualslider.glm<-function(m,pred=predict(m),bw=NULL,label=deparse(substitute(p
 	bwmax<-2*bwopt
       bw<-c(bwmin,bwopt,bwmax)
     } else if((length(bw)!=3)&(length(bw)!=2))stop("if specified bw must have a length of 2 or 3 and be of either forms (min, max) or (min, starting, max)")
-    if(length(bw)==2){bw<-c(bw[1],mean(bw),bw[2])}
+    if(length(bw)==2) { bw<-c(bw[1],mean(bw),bw[2]) }
 	bwcury<-bwcuryhat<-bw[2]
 
     # setup plotting area and grid viewports
@@ -73,7 +73,7 @@ mmpdualslider.glm<-function(m,pred=predict(m),bw=NULL,label=deparse(substitute(p
     grid.text(yname,x=unit(-3,'lines'),rot=90)
     #add points
     points<-grid.points(name='points',pred,yplot,pch=1,size=unit(3,'mm'))
-    if(fam=='binomial' && length(unique(y))==2){
+    if(fam=='binomial' && length(unique(y))==2) {
       sel<-y!=round(yhat)
       mispoints<-grid.points(name='misclassified points',pred[sel],yplot[sel],gp=gpar(col='red'),pch=1,size=unit(3,'mm'))
     }
@@ -93,9 +93,9 @@ mmpdualslider.glm<-function(m,pred=predict(m),bw=NULL,label=deparse(substitute(p
     xeval<-seq(min(pred),max(pred),length=200)
     bwboxwidth<-1.1*grobWidth(textGrob(expression(h[y])))
     res<-TRUE
-	yhat.fam<-paste(if(substr(fam,1,1)=="q"){""}else{"q"},fam,sep="")
-    while(!is.null(res)){
-        if(unclass(res$y)>=.5 ||(is.logical(res) && res)){
+	yhat.fam<-paste(if(substr(fam,1,1)=="q") {""} else {"q"},fam,sep="")
+    while(!is.null(res)) {
+        if(unclass(res$y)>=.5 ||(is.logical(res) && res)) {
           grid.remove('ybwind*',grep=T,global=T,warn=F)    
           grid.remove('ycurve',global=T,warn=F)
           if(!is.null(res$x))bwcury<-unclass(res$x)
@@ -108,7 +108,7 @@ mmpdualslider.glm<-function(m,pred=predict(m),bw=NULL,label=deparse(substitute(p
           lfy<-locfit(y~lfx,family=fam,link=link)
           seekViewport('plot');grid.lines(name='ycurve',x=unit(xeval,'native'), y=unit(predict(lfy,data.frame(lfx=xeval)),'native'), gp=gpar(col=colors[1],lty=1))
         }
-        if(unclass(res$y)<.5 ||(is.logical(res) && res)){
+        if(unclass(res$y)<.5 ||(is.logical(res) && res)) {
           grid.remove('yhatbwind*',grep=T,global=T,warn=F)    
           grid.remove('yhatcurve',global=T,warn=F)
           if(!is.null(res$x))bwcuryhat<-unclass(res$x)
@@ -123,6 +123,6 @@ mmpdualslider.glm<-function(m,pred=predict(m),bw=NULL,label=deparse(substitute(p
         }
         seekViewport('bwselarea')
         res<-grid.locator() 
-        if(!is.null(res) && unclass(res$y)>1){res<-NULL}
+        if(!is.null(res) && unclass(res$y)>1) {res<-NULL}
     }
 }

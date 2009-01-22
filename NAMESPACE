@@ -1,9 +1,6 @@
 #Namespace for marginalmodelplots package
 export(
 	aicc,
-	mmpdualslider,
-	mmpdualslider.glm,
-	mmpdualslider.lm,
 	mmpslider,
 	mmpslider.glm,
 	mmpslider.lm,

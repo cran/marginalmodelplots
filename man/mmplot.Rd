@@ -25,9 +25,9 @@ mmplot1.lm(object,u=predict(object),
 	label=deparse(substitute(u)), locfit.control=list(nn=2/3),
     colors=c("blue","red"), ...)
 mmplot1.glm(object,u=predict(object),mean=TRUE,
-    label=deparse(substitute(u)), locfit.control=list(nn=2/3),
-    colors=c("blue","red"),family=NULL,link=NULL,yhat.autoquasi=TRUE,...)
-
+    label=deparse(substitute(u)), locfit.control=list(nn=2/3), subset=NULL,
+    colors=c("blue","red"),family=NULL,link=NULL,yhat.autoquasi=TRUE,
+	inc.legend=TRUE,...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -41,27 +41,31 @@ mmplot1.glm(object,u=predict(object),mean=TRUE,
   determined by the program.  If you don't like the default you can set your
   own layout:  \code{c(2,3)} means two rows and three columns.}
   \item{ask}{If TRUE, ask before clearing the graph window to draw more plots.}
-  \item{u}{ The quantity to be plotted on the horizontal axis.  The
+  \item{u}{The quantity to be plotted on the horizontal axis.  The
   default is the predicted values \code{predict(object)}.  Can be any other
   vector of length equal to the number of observations in the object. }
-  \item{mean}{ If TRUE, compare mean smooths.  Depreciated, should allways be left as TRUE.}
-  \item{label}{ label for horizontal axis }
+  \item{mean}{If TRUE, compare mean smooths.  Depreciated, should allways be left as TRUE.}
+  \item{label}{label for horizontal axis }
   \item{locfit.control}{A list of control parameters to pass to the locfit function to adjust
 			the nature of the curve.  the primary purpose of this will be to set the bandwidth 
 			or nearest neighbor parameter for smoothing, although any of the \code{\link[locfit]{locfit}}
 			parameters may be set here.  To use a optimally computed bandwidth use \code{h='aic'} or \code{nn='gcv'}
 			for an AIC optimal fixed bandwidth or a GCV optimal nearest neighbor, respectivly.}
-  \item{colors}{ colors for response and fitted values smooths, respectively }
+  \item{subset}{logical vector indicating the observations to use. See \link[base]{subset}.}
+  \item{colors}{colors for response and fitted values smooths, respectively }
   \item{family}{Overrides the family used for the local glm fit in glm models.  }
   \item{link}{Overrides the link used for the local glm fit in glm models. }
   \item{yhat.autoquasi}{Determines if the quasi version of the family should be used to fit the fitted values curve.  The default is True, since the fitted values do not have constant variance.}
-  \item{\dots}{ additional arguments passed to \code{plot} }
+  \item{inc.legend}{Determines if there is a legend included on the plot. Defaults to TRUE.}
+  \item{\dots}{additional arguments passed to \code{plot} }
 }   
 \details{
 \code{mmplot1} draws one marginal model plot.  \code{mmplot} draws all marginal model plots,
 versus each of the terms in the model and versus fitted values.  \code{mmplot}
 should not be used if some of the terms in the model are factors or
 interactions.
+
+Special attention is paid to logistic regression models.  The vertical axis is labeled with the levels of the factor if the response was a factor.  Also points are colored if the predicted outcome differs from the observed response.
 
 The \code{mmplot} implimentation here uses the locfit package to generate the non parametric smooths.
 A \code{lm} model is equivalent to using a local polynomial smooth, but with \code{glm} models
@@ -80,7 +84,7 @@ Warnings that are passed from the locfit procedures are for the final fit.
 
 \seealso{\code{\link[locfit]{locfit}}, \code{\link{plot}} }
 
-\references{ S. Weisberg (2005), \emph{Applied
+\references{S. Weisberg (2005), \emph{Applied
 Linear Regression}, third edition, Wiley, Chapter 8}
 \author{Andrew Redd, \email{aredd at stat.tamu.edu}}
 

@@ -1,3 +1,16 @@
+Version 0.4.1
+12/29/2008 2:16 PM - Removed mmpdualslider functions from visibility. Removed from NAMESPACE amd mmpslider.Rd
+12/29/2008 2:31 PM - Changed name to marginalmodelplots - Marginal Mean Model Plots.
+12/29/2008 3:01 PM - Added MissAmerica08 dataset and Documentation
+
+
+
+Version 0.4.0
+mmplot1 updated to accept named arguments
+mmplot1 has new argument inc.legend.  Defaults to TRUE. Controls whether a legend is included by default.
+mmplot1 has new hidden argument legend.loc gives location of legend in the plot.  Defaults to upper left corner of the screen, aligned to the tick marks.
+
+
 Version 0.3.0
 Updated MichelinNY Data.
 Changed the interface to the slider plots (mmpslider and mmpdual slider) to allow for vectors of length 2 to be passed to the bw parameter.
