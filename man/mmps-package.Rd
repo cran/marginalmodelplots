@@ -20,9 +20,9 @@ License: \tab GPL version 2 or newer.\cr
 	experimentation with bandwidths through the functions
 	\code{\link{mmpslider}} and \code{\link{mmpdualslider}}.\\
 	marginalmodelplots is based on the work of marginal model plots by Cook and Weisburg, 
-	and extends the their work in from the package  \code{\link[alr3:alr3-package]{alr3}}. 
-	Unlike \code{\link[alr3:alr3-package]{alr3}} the marginalmodelplots package only performs
-	mean curve smooths.  For variance curve estimation use \code{\link[alr3:alr3-package]{alr3}}.
+	and extends the their work in from the package  \code{alr3}. 
+	Unlike \code{alr3} the marginalmodelplots package only performs
+	mean curve smooths.  For variance curve estimation use the \code{alr3} package.
 }
 \author{
 	Andrew Redd
@@ -36,7 +36,5 @@ License: \tab GPL version 2 or newer.\cr
 \keyword{smooth}
 \keyword{regression}
 \keyword{dynamic}
-\seealso{
- \code{\link[alr3:alr3-package]{alr3}}
-}
+
 

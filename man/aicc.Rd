@@ -2,7 +2,7 @@
 \alias{aicc}
 \title{Akaike's Information Criteria - Corrected for Non-Parametic Models}
 \description{
-Calculates Akaike's information criteria corrected for non parametric models made with \code{\link[locfit]{ locfit}}.
+Calculates Akaike's information criteria corrected for non parametric models made with \code{\link[locfit]{locfit}}.
 }
 \usage{
 aicc(x,\dots,pen=2)
@@ -16,7 +16,7 @@ aicc(x,\dots,pen=2)
 vector of length 4 with the value of the aicc in the fourth spot.
 }
 
-\seealso{\link[locfit]{ aic}, \link[locfit]{ gcv}}
+\seealso{\link[locfit]{aic}, \link[locfit]{gcv}}
 
 \references{
 Chiou, J. and Tsai, C. (2006). Smoothing parameter selection in quasi-likelihood models.
